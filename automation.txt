@@ -1,0 +1,34 @@
+自动化命名规范：
+三套环境各自新建应用场景：dataCollectionFTAutomation(DCFT)，dataProcessAutomation(DPFT)， dataStorageAutomation(DSFT), others(MiscFT)，
+ 以上4个又分别对应四个系统测试应用场景：DCST/DPST/DSST/MiscST ST包括Stability 和robustness测试。
+
+Testcase 命名规范： 应用场景（大写）_大类描述（小写）_小类描述（小写）
+_ID（3位数字） ，category: Smoke test, other
+ 大类描述：ST指stability，capacity，robustness，对于FT，可先使用basic，以后可以扩展为yinlian/guokai/taibao等等。
+小类描述：FT/ST都可以使用：DC的比如file/kafka/syslog， DP的如parsing/aggregation/join/。DS的如ES/HDFS等。
+ ID 从0001开始增加。
+Testcase 描述：在每个case里面加注释，以补充命名规范的不足。
+
+DCFT_basic_kafka_001  对于kafka的采集功能测试   DSST_stability_join_002  join任务的stability 测试
+
+每个test case读取配置文件：根据case 的不同参数来读取配置文件。 比如test.py  —env UAT191 —testset …每个case测试完成后要打扫战场以避免搞瘫kafka 和ES。
+配置文件有itoa的地址。
+
+每个test case之间还有依赖关系。。。？
+
+
+对于所有的case，收集log
+[stream|persistent]/logs/[kafka.log, consumer.log, producer.log]
+，对于memory，cpu 生成📈。
+java memory 根据jps进程收集（top pid）
+jstat -gcutil pid 1000
+
+jstack pid
+
+cat es cat
+health
+nodes
+indices/shards/segments
+allocation/thread pool
+
+每个人的独立环境进行稳定性测试，cpu memory情况的趋势图

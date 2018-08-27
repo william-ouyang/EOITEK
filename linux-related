@@ -1,0 +1,14 @@
+Free -g
+
+Cat /proc/cpuinfo
+
+Top 
+
+find . -type f -size +1000000k 
+
+  yum install iptraf-ng
+ iptraf-ng
+
+rpm -Uvh http://mirrors.kernel.org/fedora-epel/epel-release-latest-6.noarch.rpm
+yum install nethogs
+nethogs
